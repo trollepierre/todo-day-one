@@ -8,40 +8,26 @@ import { compareByCreatedDate } from './helpers/compareCreatedDate'
 
 const Todos = () => {
   const [todos, setTodos] = useState([])
-  const [isSortedByAscCreatedDate, setIsSortedByAscCreatedDate] = useState(true)
-  const [selectedTypes, setSelectedTypes] = useState([])
-  const [selectedStatus, setSelectedStatus] = useState('')
-  const { loading, error, data } = useQuery(GET_TODOS)
+  const [orderBy, setOrderBy] = useState('DATE_ASC')
+  const [types, setTypes] = useState(['RH', 'Marketing', 'Communication', 'Tech'])
+  const [isDone, setIsDone] = useState(undefined)
+
+  const { loading, error, data } = useQuery(GET_TODOS, {
+    variables: {
+      filters: {
+        types,
+        isDone
+      },
+      orderBy
+    }
+  })
 
   useEffect(() => {
     if (loading || error || !data) {
       return
     }
-
-    let mutableTodolistToSort = [...data.getTodoList]
-
-    const sortedTodolist = mutableTodolistToSort
-      .filter(({ type }) => {
-        if (selectedTypes.length === 0) {
-          return true
-        }
-        return selectedTypes.includes(type)
-      })
-      .filter(({ isDone }) => {
-        if (selectedStatus === '') {
-          return true
-        }
-        return isDone === (selectedStatus === 'Done')
-      })
-      .sort((a, b) => {
-        const oldestFirst = compareByCreatedDate(a.createdAt, b.createdAt)
-        return isSortedByAscCreatedDate
-          ? oldestFirst
-          : -oldestFirst
-      })
-
-    setTodos(sortedTodolist)
-  }, [data, isSortedByAscCreatedDate, selectedTypes, selectedStatus])
+    setTodos(data.getTodoList)
+  }, [data, orderBy, types, isDone])
 
   if (loading) {
     return <p>Loading...</p>
@@ -50,21 +36,34 @@ const Todos = () => {
     return <p>Error :(</p>
   }
 
-  const displayBusinessTodo = () => setSelectedTypes(['Marketing', 'Communication'])
-  const setType = type => setSelectedTypes([type])
+  const displayBusinessTodo = () => setTypes(['Marketing', 'Communication'])
+  const updateTypes = async type => {
+    if (type === '') {
+      setTypes(['RH', 'Marketing', 'Communication', 'Tech'])
+    } else {
+      setTypes([type])
+    }
+  }
   const resetFilters = () => {
-    setIsSortedByAscCreatedDate(true)
-    setSelectedTypes([])
-    setSelectedStatus('')
+    setOrderBy('DATE_ASC')
+    setTypes(['RH', 'Marketing', 'Communication', 'Tech'])
+    setIsDone(undefined)
+  }
+  const updateStatus = async value => {
+    setIsDone(value === 'Done')
+  }
+
+  const updateOrderBy = async () => {
+    setOrderBy(orderBy === 'DATE_ASC' ? 'DATE_DESC' : 'DATE_ASC')
   }
   return (
     <>
       <TodoFilters
-        sortByCreatedDate={() => setIsSortedByAscCreatedDate(!isSortedByAscCreatedDate)}
-        selectType={setType}
-        type={selectedTypes.length === 2 ? [] : selectedTypes[0]}
-        selectStatus={setSelectedStatus}
-        status={selectedStatus}
+        sortByCreatedDate={updateOrderBy}
+        selectType={updateTypes}
+        types={types}
+        selectStatus={updateStatus}
+        status={isDone}
         displayBusinessTodo={displayBusinessTodo}
         resetFilters={resetFilters}
       />

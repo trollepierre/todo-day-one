@@ -1,13 +1,14 @@
 export const TodoFilters = ({
   sortByCreatedDate,
   selectType,
-  type,
+  types,
   status,
   selectStatus,
   displayBusinessTodo,
   resetFilters
-}) =>
-  (
+}) => {
+
+  return (
     <aside>
       TodoFilters
       <button onClick={sortByCreatedDate}>Inverser l'ordre de tri par date de création</button>
@@ -16,7 +17,7 @@ export const TodoFilters = ({
       <select
         name="type"
         id="type"
-        value={type}
+        value={types.length >= 2 ? '' : types[0]}
         onChange={e => selectType(e.target.value)}>
         <option value="">Filter par type</option>
         <option value="RH">RH</option>
@@ -29,7 +30,7 @@ export const TodoFilters = ({
       <select
         name="isDone"
         id="isDone"
-        value={status}
+        value={status === undefined ? '' : (status ? 'Done' : 'Undone')}
         onChange={e => selectStatus(e.target.value)}>
         <option value="">Filter par status</option>
         <option value="Done">Done</option>
@@ -42,3 +43,4 @@ export const TodoFilters = ({
 
     </aside>
   )
+}
