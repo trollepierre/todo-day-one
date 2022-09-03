@@ -1,4 +1,4 @@
-export const TodoFilters = ({ sortByCreatedDate, selectType, type, status, selectStatus }) =>
+export const TodoFilters = ({ sortByCreatedDate, selectType, type, status, selectStatus, displayBusinessTodo }) =>
   (
     <aside>
       TodoFilters
@@ -27,6 +27,8 @@ export const TodoFilters = ({ sortByCreatedDate, selectType, type, status, selec
         <option value="Done">Done</option>
         <option value="Undone">Undone</option>
       </select>
+
+      <button onClick={displayBusinessTodo}>Uniquement les todo business</button>
 
     </aside>
   )

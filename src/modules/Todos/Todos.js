@@ -9,7 +9,7 @@ import { compareByCreatedDate } from './helpers/compareCreatedDate'
 const Todos = () => {
   const [todos, setTodos] = useState([])
   const [isSortedByAscCreatedDate, setIsSortedByAscCreatedDate] = useState(true)
-  const [selectedType, setSelectedType] = useState('')
+  const [selectedTypes, setSelectedTypes] = useState([])
   const [selectedStatus, setSelectedStatus] = useState('')
   const { loading, error, data } = useQuery(GET_TODOS)
 
@@ -22,14 +22,12 @@ const Todos = () => {
 
     const sortedTodolist = mutableTodolistToSort
       .filter(({ type }) => {
-        if (selectedType === '') {
+        if (selectedTypes.length === 0) {
           return true
         }
-        return type === selectedType
+        return selectedTypes.includes(type)
       })
       .filter(({ isDone }) => {
-        console.log({ selectedStatus, isDone })
-
         if (selectedStatus === '') {
           return true
         }
@@ -43,7 +41,7 @@ const Todos = () => {
       })
 
     setTodos(sortedTodolist)
-  }, [data, isSortedByAscCreatedDate, selectedType, selectedStatus])
+  }, [data, isSortedByAscCreatedDate, selectedTypes, selectedStatus])
 
   if (loading) {
     return <p>Loading...</p>
@@ -52,14 +50,18 @@ const Todos = () => {
     return <p>Error :(</p>
   }
 
+  const displayBusinessTodo = () => setSelectedTypes(['Marketing', 'Communication'])
+  const setType = type => setSelectedTypes([type])
+
   return (
     <>
       <TodoFilters
         sortByCreatedDate={() => setIsSortedByAscCreatedDate(!isSortedByAscCreatedDate)}
-        selectType={setSelectedType}
-        type={selectedType}
+        selectType={setType}
+        type={selectedTypes.length === 2 ? [] : selectedTypes[0]}
         selectStatus={setSelectedStatus}
         status={selectedStatus}
+        displayBusinessTodo={displayBusinessTodo}
       />
       <table>
         <thead>
