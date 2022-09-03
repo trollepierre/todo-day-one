@@ -29,7 +29,7 @@ export const TodoTableRow = ({ id, createdAt, type, isDone = false, title }) => 
 
   return (
     <tr>
-      <StyledTd onClick={handleClick} css={css``}>{title}</StyledTd>
+      <StyledTd onClick={handleClick}>{title}</StyledTd>
       <StyledTd onClick={handleClick}>{type}</StyledTd>
       <StyledTd onClick={handleClick}>{createdAt}</StyledTd>
       <td>
