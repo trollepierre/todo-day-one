@@ -14,4 +14,3 @@ it('should render Todos components', () => {
   const todosComponent = screen.getByTestId(/Todos/i);
   expect(todosComponent).toBeInTheDocument();
 });
-x

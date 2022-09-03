@@ -15,7 +15,7 @@ const Todos = () => {
       <br />
       <p>type: {type}</p>
       <br />
-      <p>createdAt: {createdAt}</p>
+      <p>createdAt: {createdAt.toDateString()}</p>
       <br />
     </div>
   ));
