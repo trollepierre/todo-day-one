@@ -39,4 +39,6 @@ describe('Todos', () => {
   // TODO: test the list is sorted by createdDate
   // TODO: test the list is filtered by type
   // TODO: test the list is filtered by status
+  // TODO: test the list is filtered by business todo
+  // TODO: test the list is filtered by reset filters
 })
