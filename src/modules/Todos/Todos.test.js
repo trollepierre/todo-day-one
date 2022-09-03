@@ -35,4 +35,6 @@ describe('Todos', () => {
     )
     expect(await screen.findByText("dummy title")).toBeInTheDocument();
   })
+
+  // TODO: test the list is sorted by createdDate
 })
