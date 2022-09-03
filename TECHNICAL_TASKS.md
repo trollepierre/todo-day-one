@@ -5,6 +5,7 @@
   - eslint: downgrade to 8.22.0 if the error remains: https://stackoverflow.com/questions/73509984/eslint-typeerror-this-liboptions-parse-is-not-a-function
   - husky
   - typescript
+  - alias webpack management
 
 ## To question with teams
   - reportWebVitals: do we keep it?
