@@ -23,9 +23,12 @@ const App = () => (
         font-size: calc(10px + 2vmin);
         color: white;
       `}>
-      <p>
+      {/*TODO: move this code in a AppHeader inside the Router, use a <Link>*/}
+      <a href='/' css={css`
+        color: inherit;
+      `}>
         Day One Pierre Trollé Test technique
-      </p>
+      </a>
     </header>
 
     <BrowserRouter>
