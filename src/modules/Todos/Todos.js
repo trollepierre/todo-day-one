@@ -52,7 +52,11 @@ const Todos = () => {
 
   const displayBusinessTodo = () => setSelectedTypes(['Marketing', 'Communication'])
   const setType = type => setSelectedTypes([type])
-
+  const resetFilters = () => {
+    setIsSortedByAscCreatedDate(true)
+    setSelectedTypes([])
+    setSelectedStatus('')
+  }
   return (
     <>
       <TodoFilters
@@ -62,6 +66,7 @@ const Todos = () => {
         selectStatus={setSelectedStatus}
         status={selectedStatus}
         displayBusinessTodo={displayBusinessTodo}
+        resetFilters={resetFilters}
       />
       <table>
         <thead>
