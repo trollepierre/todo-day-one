@@ -12,6 +12,7 @@
   - naming of files: camlCase, kebab-case
   - extension of file: jsx, js
   - extension of test: .test.js vs .spec.js
+  - yarn vs npm
 
 ## Migration to Emotion
   - migrate index.css

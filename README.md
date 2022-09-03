@@ -18,3 +18,16 @@ Launches the test runner in the interactive watch mode.\
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
+## Instruction
+
+This project respects most of the instructions given by the exercises.
+Next technical steps have been added in [TECHNICAL_TASKS.md](./TECHNICAL_TASKS.md)
+
+- Responsive is not implemented yet.
+- Cleaning a bit the component to be done according to time.
+- No bugs found.
+- Split of responsibilities, code, file tree have been done, or added in TODO mentions.
+
+### Addendum
+
+- Testing has been done (not asked) on some components
