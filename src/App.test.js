@@ -6,4 +6,3 @@ test('renders Day One Pierre Trollé Test technique text', () => {
   const linkElement = screen.getByText(/Day One Pierre Trollé Test technique/i);
   expect(linkElement).toBeInTheDocument();
 });
-
