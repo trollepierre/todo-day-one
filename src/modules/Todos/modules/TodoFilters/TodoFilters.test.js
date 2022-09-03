@@ -8,4 +8,6 @@ describe('TodoFilters', () => {
     )
     expect(container).toMatchSnapshot()
   })
+
+  // TODO: testing methods
 })

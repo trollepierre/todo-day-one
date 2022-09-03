@@ -9,6 +9,7 @@ import { compareByCreatedDate } from './helpers/compareCreatedDate'
 const Todos = () => {
   const [todos, setTodos] = useState([])
   const [isSortedByAscCreatedDate, setIsSortedByAscCreatedDate] = useState(true)
+  const [selectedType, setSelectedType] = useState('')
   const { loading, error, data } = useQuery(GET_TODOS)
 
   useEffect(() => {
@@ -18,16 +19,24 @@ const Todos = () => {
 
     let mutableTodolistToSort = [...data.getTodoList]
 
-    mutableTodolistToSort
+    const sortedTodolist = mutableTodolistToSort
+      .filter(({ type }) => {
+        if (selectedType === '') {
+          return true
+        }
+        console.log(selectedType)
+
+        return type === selectedType
+      })
       .sort((a, b) => {
         const oldestFirst = compareByCreatedDate(a.createdAt, b.createdAt)
         return isSortedByAscCreatedDate
           ? oldestFirst
-          : - oldestFirst
+          : -oldestFirst
       })
 
-    setTodos(mutableTodolistToSort)
-  }, [data, isSortedByAscCreatedDate])
+    setTodos(sortedTodolist)
+  }, [data, isSortedByAscCreatedDate, selectedType])
 
   if (loading) {
     return <p>Loading...</p>
@@ -37,10 +46,10 @@ const Todos = () => {
   }
 
   const sortByCreatedDate = () => setIsSortedByAscCreatedDate(!isSortedByAscCreatedDate)
-
+  const selectType = type => setSelectedType(type)
   return (
     <>
-      <TodoFilters sortByCreatedDate={sortByCreatedDate}/>
+      <TodoFilters sortByCreatedDate={sortByCreatedDate} selectType={selectType} type={selectedType}/>
       <table>
         <thead>
         <TodoTableRowHeader/>
