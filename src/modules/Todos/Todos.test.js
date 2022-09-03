@@ -3,8 +3,14 @@ import Todos from './Todos'
 import { MockedProvider } from "@apollo/client/testing"
 import { GET_TODOS } from '../../gpl-helpers/todos-queries'
 import { dummyTodo } from '../../dummies/dummyTodo'
+import { useNavigate } from 'react-router-dom'
+
+jest.mock('react-router-dom')
 
 describe('Todos', () => {
+  beforeEach(() => {
+    useNavigate.mockReturnValue(() => {})
+  })
   it('should render Loading when no respond from apollo', async () => {
     const mocks = []
     render(
@@ -20,6 +26,8 @@ describe('Todos', () => {
       {
         request: {
           query: GET_TODOS,
+          variables: { filters: { types: ['RH', 'Marketing', 'Communication', 'Tech'], isDone: undefined}, orderBy: 'DATE_ASC' }
+
         },
         result: {
           data: {

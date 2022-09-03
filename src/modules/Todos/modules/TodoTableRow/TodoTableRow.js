@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useMutation } from '@apollo/client';
 import { UPDATE_TODO_STATUS_BY_ID } from '../../../../gpl-helpers/todo-mutation'
 import { useNavigate } from 'react-router-dom'
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
 const StyledTd = styled.td`

@@ -5,7 +5,63 @@ exports[`TodoFilters should match snapshot 1`] = `
   <aside>
     TodoFilters
     <button>
-      Trier par date de création
+      Inverser l'ordre de tri par date de création
+    </button>
+    <select
+      id="type"
+      name="type"
+    >
+      <option
+        value=""
+      >
+        Filter par type
+      </option>
+      <option
+        value="RH"
+      >
+        RH
+      </option>
+      <option
+        value="Tech"
+      >
+        Tech
+      </option>
+      <option
+        value="Marketing"
+      >
+        Marketing
+      </option>
+      <option
+        value="Communication"
+      >
+        Communication
+      </option>
+    </select>
+    <select
+      id="isDone"
+      name="isDone"
+    >
+      <option
+        value=""
+      >
+        Filter par status
+      </option>
+      <option
+        value="Done"
+      >
+        Done
+      </option>
+      <option
+        value="Undone"
+      >
+        Undone
+      </option>
+    </select>
+    <button>
+      Uniquement les todo business
+    </button>
+    <button>
+      Reset filters
     </button>
   </aside>
 </div>

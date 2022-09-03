@@ -4,8 +4,16 @@ import { MockedProvider } from "@apollo/client/testing"
 import { dummyTodo } from '../../../../dummies/dummyTodo'
 import { UPDATE_TODO_STATUS_BY_ID } from '../../../../gpl-helpers/todo-mutation'
 import { act } from 'react-dom/test-utils'
+import { useNavigate } from 'react-router-dom'
+
+jest.mock('react-router-dom')
 
 describe('TodoTableRow', () => {
+  beforeEach(() => {
+    // TODO: test navigation
+    useNavigate.mockReturnValue(() => {})
+  })
+
   it('should contain title, type, created', async () => {
     const mocks = []
     render(
