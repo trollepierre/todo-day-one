@@ -10,6 +10,7 @@ const Todos = () => {
   const [todos, setTodos] = useState([])
   const [isSortedByAscCreatedDate, setIsSortedByAscCreatedDate] = useState(true)
   const [selectedType, setSelectedType] = useState('')
+  const [selectedStatus, setSelectedStatus] = useState('')
   const { loading, error, data } = useQuery(GET_TODOS)
 
   useEffect(() => {
@@ -24,9 +25,15 @@ const Todos = () => {
         if (selectedType === '') {
           return true
         }
-        console.log(selectedType)
-
         return type === selectedType
+      })
+      .filter(({ isDone }) => {
+        console.log({ selectedStatus, isDone })
+
+        if (selectedStatus === '') {
+          return true
+        }
+        return isDone === (selectedStatus === 'Done')
       })
       .sort((a, b) => {
         const oldestFirst = compareByCreatedDate(a.createdAt, b.createdAt)
@@ -36,7 +43,7 @@ const Todos = () => {
       })
 
     setTodos(sortedTodolist)
-  }, [data, isSortedByAscCreatedDate, selectedType])
+  }, [data, isSortedByAscCreatedDate, selectedType, selectedStatus])
 
   if (loading) {
     return <p>Loading...</p>
@@ -45,11 +52,15 @@ const Todos = () => {
     return <p>Error :(</p>
   }
 
-  const sortByCreatedDate = () => setIsSortedByAscCreatedDate(!isSortedByAscCreatedDate)
-  const selectType = type => setSelectedType(type)
   return (
     <>
-      <TodoFilters sortByCreatedDate={sortByCreatedDate} selectType={selectType} type={selectedType}/>
+      <TodoFilters
+        sortByCreatedDate={() => setIsSortedByAscCreatedDate(!isSortedByAscCreatedDate)}
+        selectType={setSelectedType}
+        type={selectedType}
+        selectStatus={setSelectedStatus}
+        status={selectedStatus}
+      />
       <table>
         <thead>
         <TodoTableRowHeader/>
