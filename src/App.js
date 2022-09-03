@@ -1,5 +1,11 @@
 import Todos from './modules/Todos/Todos'
 import { css } from '@emotion/react'
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom"
+import { TodoDetails } from './modules/TodoDetails/TodoDetails'
 
 const App = () => (
   <div
@@ -21,7 +27,17 @@ const App = () => (
         Day One Pierre Trollé Test technique
       </p>
     </header>
-    <Todos/>
+
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Todos/>}>
+        </Route>
+        <Route
+          path="/todo/:id"
+          element={<TodoDetails />}
+        />
+      </Routes>
+    </BrowserRouter>
   </div>
 )
 
