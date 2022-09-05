@@ -20,3 +20,4 @@
 ## Before deployment
   - add CI
   - handle environment variable
+  - update public folder (especially index.html, logo, manifest...)
