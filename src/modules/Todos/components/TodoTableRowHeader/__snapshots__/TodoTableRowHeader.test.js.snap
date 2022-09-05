@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoTableRowHeader should match snapshot 1`] = `
+<div>
+  <table>
+    <tbody>
+      <tr>
+        <th>
+          title
+        </th>
+        <th>
+          Type
+        </th>
+        <th>
+          Created At
+        </th>
+        <th>
+          isDone?
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

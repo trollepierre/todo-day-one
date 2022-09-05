@@ -21,6 +21,8 @@ describe('TodoDetails', () => {
     expect(await screen.findByText("Loading...")).toBeInTheDocument()
   })
 
+  // TODO: testing error
+
   it('should render todo with details when apollo returns todo', async () => {
     const mocks = [
       {
