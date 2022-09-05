@@ -2,12 +2,17 @@
 
 exports[`TodoFilters should match snapshot 1`] = `
 <div>
-  <aside>
-    TodoFilters
+  <aside
+    class="css-1wev0ll"
+  >
+    <p>
+      TodoFilters
+    </p>
     <button>
       Inverser l'ordre de tri par date de création
     </button>
     <select
+      class="css-1yltisf"
       id="type"
       name="type"
     >
@@ -38,6 +43,7 @@ exports[`TodoFilters should match snapshot 1`] = `
       </option>
     </select>
     <select
+      class="css-1yltisf"
       id="isDone"
       name="isDone"
     >

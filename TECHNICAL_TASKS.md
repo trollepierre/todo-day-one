@@ -14,6 +14,7 @@
   - extension of file: jsx, js
   - extension of test: .test.js vs .spec.js
   - yarn vs npm
+  - StyledDiv vs <div css={css``} 
 
 ## Migration to Emotion
   - migrate index.css
