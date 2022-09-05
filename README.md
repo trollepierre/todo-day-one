@@ -23,8 +23,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 This project respects most of the instructions given by the exercises.
 Next technical steps have been added in [TECHNICAL_TASKS.md](./TECHNICAL_TASKS.md)
 
-- Responsive is not implemented yet.
-- Cleaning a bit the component to be done according to time.
 - No bugs found.
 - Split of responsibilities, code, file tree have been done, or added in TODO mentions.
 
