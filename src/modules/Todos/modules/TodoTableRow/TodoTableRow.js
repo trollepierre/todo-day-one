@@ -10,7 +10,7 @@ const StyledTd = styled.td`
   }
 `;
 
-export const TodoTableRow = ({ id, createdAt, type, isDone = false, title, refreshIsDone }) => {
+export const TodoTableRow = ({ id, createdAt, type, isDone = false, title, refetchTodos }) => {
   // TODO: understand why I did not succeed to use [updateTodoStatus, { loading, data }]
   const [updateTodoStatus] = useMutation(UPDATE_TODO_STATUS_BY_ID);
   const [isChecked, setIsChecked] = useState(isDone)
@@ -22,7 +22,7 @@ export const TodoTableRow = ({ id, createdAt, type, isDone = false, title, refre
     // TODO: handle error and loading case, according to business spec
     const { updateTodoStatusById } = fetchResult.data
     setIsChecked(updateTodoStatusById.isDone)
-    refreshIsDone()
+    refetchTodos()
   }
 
   const handleClick = () => navigate(`/todo/${id}`)

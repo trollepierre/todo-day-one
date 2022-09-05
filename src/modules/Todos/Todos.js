@@ -56,7 +56,7 @@ export const Todos = () => {
     setOrderBy(orderBy === 'DATE_ASC' ? 'DATE_DESC' : 'DATE_ASC')
   }
 
-  const refreshIsDone = async () => {
+  const refetchTodos = async () => {
     await refetch()
   }
 
@@ -76,7 +76,7 @@ export const Todos = () => {
         <TodoTableRowHeader />
         </thead>
         <tbody>
-        {todos.map(todo => <TodoTableRow key={todo.id} {...todo} refreshIsDone={refreshIsDone} />)}
+        {todos.map(todo => <TodoTableRow key={todo.id} {...todo} refetchTodos={refetchTodos} />)}
         </tbody>
       </table>
     </>)
