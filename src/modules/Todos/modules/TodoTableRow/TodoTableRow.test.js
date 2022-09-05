@@ -3,7 +3,7 @@ import { TodoTableRow } from './TodoTableRow'
 import { MockedProvider } from "@apollo/client/testing"
 import { dummyTodo } from '../../../../dummies/dummyTodo'
 import { UPDATE_TODO_STATUS_BY_ID } from '../../../../gpl-helpers/todo-mutation'
-import { act } from 'react-dom/test-utils'
+// import { act } from 'react-dom/test-utils'
 import { useNavigate } from 'react-router-dom'
 
 jest.mock('react-router-dom')
@@ -25,7 +25,7 @@ describe('TodoTableRow', () => {
     )
     expect(await screen.findByText("dummy title")).toBeInTheDocument()
     expect(await screen.findByText("RH")).toBeInTheDocument()
-    expect(await screen.findByText("2021-10-04T14:27:20.000Z")).toBeInTheDocument()
+    expect(await screen.findByText("10/4/2021")).toBeInTheDocument()
   })
 
   it('should update checked once clicked', async () => {

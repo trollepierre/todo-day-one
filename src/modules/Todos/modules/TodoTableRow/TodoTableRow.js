@@ -31,7 +31,7 @@ export const TodoTableRow = ({ id, createdAt, type, isDone = false, title, refet
     <tr>
       <StyledTd onClick={handleClick}>{title}</StyledTd>
       <StyledTd onClick={handleClick}>{type}</StyledTd>
-      <StyledTd onClick={handleClick}>{createdAt}</StyledTd>
+      <StyledTd onClick={handleClick}>{new Date(createdAt).toLocaleDateString()}</StyledTd>
       <td>
         <input
           type="checkbox"

@@ -7,6 +7,7 @@ const StyledAside = styled.aside`
   gap: 5px;
   margin: 20px;
   max-width: 400px;
+  align-self: center;
  `
 
 const StyledSelect = styled.select`

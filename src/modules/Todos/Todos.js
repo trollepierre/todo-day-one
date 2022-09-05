@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import { GET_TODOS } from '../../gpl-helpers/todos-queries'
 import { TodoTableRow } from './modules/TodoTableRow/TodoTableRow'
 import { TodoTableRowHeader } from './components/TodoTableRowHeader/TodoTableRowHeader'
 import { TodoFilters } from './modules/TodoFilters/TodoFilters'
+import styled from '@emotion/styled'
 
+const StyledMain = styled.main`
+  display: flex;
+  flex-direction: column;
+`
 export const Todos = () => {
   const [todos, setTodos] = useState([])
   const [orderBy, setOrderBy] = useState('DATE_ASC')
@@ -61,7 +66,7 @@ export const Todos = () => {
   }
 
   return (
-    <>
+    <StyledMain>
       <TodoFilters
         sortByCreatedDate={updateOrderBy}
         selectType={updateTypes}
@@ -79,5 +84,5 @@ export const Todos = () => {
         {todos.map(todo => <TodoTableRow key={todo.id} {...todo} refetchTodos={refetchTodos} />)}
         </tbody>
       </table>
-    </>)
+    </StyledMain>)
 }
