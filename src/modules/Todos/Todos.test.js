@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import Todos from './Todos'
+import { Todos } from './Todos'
 import { MockedProvider } from "@apollo/client/testing"
 import { GET_TODOS } from '../../gpl-helpers/todos-queries'
 import { dummyTodo } from '../../dummies/dummyTodo'

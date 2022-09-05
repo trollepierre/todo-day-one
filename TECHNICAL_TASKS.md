@@ -6,6 +6,7 @@
   - husky
   - typescript
   - alias webpack management
+  - emotion jest not correctly working: to investigate
 
 ## To question with teams
   - reportWebVitals: do we keep it?

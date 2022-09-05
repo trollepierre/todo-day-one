@@ -4,9 +4,8 @@ import { GET_TODOS } from '../../gpl-helpers/todos-queries'
 import { TodoTableRow } from './modules/TodoTableRow/TodoTableRow'
 import { TodoTableRowHeader } from './components/TodoTableRowHeader/TodoTableRowHeader'
 import { TodoFilters } from './modules/TodoFilters/TodoFilters'
-import { compareByCreatedDate } from './helpers/compareCreatedDate'
 
-const Todos = () => {
+export const Todos = () => {
   const [todos, setTodos] = useState([])
   const [orderBy, setOrderBy] = useState('DATE_ASC')
   const [types, setTypes] = useState(['RH', 'Marketing', 'Communication', 'Tech'])
@@ -77,5 +76,3 @@ const Todos = () => {
       </table>
     </>)
 }
-
-export default Todos

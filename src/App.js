@@ -1,4 +1,4 @@
-import Todos from './modules/Todos/Todos'
+import { Todos } from './modules/Todos/Todos'
 import { css } from '@emotion/react'
 import {
   BrowserRouter,
