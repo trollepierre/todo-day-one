@@ -11,7 +11,7 @@ export const Todos = () => {
   const [types, setTypes] = useState(['RH', 'Marketing', 'Communication', 'Tech'])
   const [isDone, setIsDone] = useState(undefined)
 
-  const { loading, error, data } = useQuery(GET_TODOS, {
+  const { loading, error, data, refetch } = useQuery(GET_TODOS, {
     variables: {
       filters: {
         types,
@@ -26,7 +26,7 @@ export const Todos = () => {
       return
     }
     setTodos(data.getTodoList)
-  }, [data, orderBy, types, isDone])
+  }, [data, loading, error])
 
   if (loading) {
     return <p>Loading...</p>
@@ -55,6 +55,11 @@ export const Todos = () => {
   const updateOrderBy = async () => {
     setOrderBy(orderBy === 'DATE_ASC' ? 'DATE_DESC' : 'DATE_ASC')
   }
+
+  const refreshIsDone = async () => {
+    await refetch()
+  }
+
   return (
     <>
       <TodoFilters
@@ -68,10 +73,10 @@ export const Todos = () => {
       />
       <table>
         <thead>
-        <TodoTableRowHeader/>
+        <TodoTableRowHeader />
         </thead>
         <tbody>
-        {todos.map(todo => <TodoTableRow key={todo.id} {...todo} />)}
+        {todos.map(todo => <TodoTableRow key={todo.id} {...todo} refreshIsDone={refreshIsDone} />)}
         </tbody>
       </table>
     </>)

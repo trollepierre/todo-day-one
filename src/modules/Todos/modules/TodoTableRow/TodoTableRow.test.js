@@ -72,4 +72,7 @@ describe('TodoTableRow', () => {
     // })
     // })
   })
+  // TODO: testing: refreshIsDone is called
+
+  // TODO: testing navigation
 })
