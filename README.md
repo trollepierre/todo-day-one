@@ -1,6 +1,11 @@
 # Day One Technical Test
 
-Todo manager
+Todo manager, with React, Apollo Client, Emotion and tested
+
+## Required
+
+This project needs data from [a server](https://github.com/Mrtblg/todo-provided-server) to run correctly.
+Follow the README.md of this project before started this one.
 
 ## Available Scripts
 
